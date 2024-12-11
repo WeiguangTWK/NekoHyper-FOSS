@@ -60,3 +60,23 @@ Without disabling it or patching it (like replace public key of VBmeta and repla
 
 > The Android Debug Bridge connects Android devices to to computers running other OSes (Linux, MacOS, and Windows) over USB or TCP. [Source Article](https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md)
 
+ADB is originally for DEBUG purpose so as a debug shell it has a higher permission that normal user. So processes started by ADB will also have same permission ADB have. That how software like Shizuku, IceBox(ADB mode)etc run.
+For us, we can make full use of what ADB can do like:
+
+```host machine cmd Prompt
+adb shell <command>
+```
+
+execute command
+
+```host machine cmd Prompt
+adb shell
+```
+
+enter shell look like a SSH session
+
+```host machine cmd Prompt
+adb reboot <fastboot/recovery/none>
+```
+
+Reboot to fastboot or recovery or just reboot
