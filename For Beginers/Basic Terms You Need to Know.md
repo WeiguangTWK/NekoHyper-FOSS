@@ -3,18 +3,24 @@
 Here is some terms that will be frequently mentioned in later articles, you need to know and keep in mind.
 
 ## ROM
+
 In computer terms "ROM" often refer to "Read-Only Memory" so does this. But call a file "ROM" it actually refers to "firmware". It is ROM where these firmwares are flashed into.
 
 ## Fastboot （线刷）
+
 Fastboot (or named bootloader mode) is mode for device maintenance opt (etc. format userdata, unlock/lock bootloader and flash certain partitions) through other device like PC. [Here](https://android.googlesource.com/platform/system/core/+/master/fastboot/README.md) for more tech detail.
 For us, fastboot is actually a command interface to perform operation above like
+
+```Command Prompt
+fastboot erase userdata
 ```
-$ fastboot erase userdata
-```
+
 This command will clear all your userdata (in other word, this formats the userdata partition)
+
+```Command Prompt
+fastboot flash boot ~/boot.img
 ```
-$ fastboot flash boot ~/boot.img
-```
+
 And this will flash "boot.img" under your home dir into your device's boot partition
 I will introduce more command but here you just need to know what it is.
 
@@ -28,8 +34,11 @@ In most cases, stock recovery won't have an option to enable you to flash custom
 That's why we need to use custom recovery
 
 ## Bootloader Lock / OEM lock
+
 "Bootloader" mentioned here refers to a program that load the system. (In the ABL partition of a phone).
+
 ### So as for the Lock?
+
 If you try to flash certain partition with a modded image file without unlock it, you will get
 
 > Failed (remote: 'command not allowed')
@@ -46,3 +55,8 @@ After bootloader is unlocked, the next one to deal with is AVB
 VBmeta contain hash values and signatures of each partitions that need to be verified (see [here](https://android.googlesource.com/platform/external/avb/+/master/README.md) of tech detail)
 
 Without disabling it or patching it (like replace public key of VBmeta and replace new hash into it) after flash custom partition images, your phone won't boot
+
+## ADB (Android Debug Bridge)
+
+> The Android Debug Bridge connects Android devices to to computers running other OSes (Linux, MacOS, and Windows) over USB or TCP. [Source Article](https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md)
+
